@@ -50,3 +50,11 @@ type = "patch"
 
 [[change]]
 type = "release"
+
+[[change]]
+name = "Add proper documentation"
+package = "@beo/signal"
+type = "patch"
+
+[[change]]
+type = "release"
