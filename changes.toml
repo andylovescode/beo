@@ -58,3 +58,11 @@ type = "patch"
 
 [[change]]
 type = "release"
+
+[[change]]
+name = "Use globalThis instead of window"
+package = "@beo/global"
+type = "patch"
+
+[[change]]
+type = "release"
