@@ -29,3 +29,8 @@ type = "release"
 name = "Reword the module documentation"
 package = "@beo/global"
 type = "patch"
+
+[[change]]
+name = "Improve the documentation on JSR"
+package = "@beo/version"
+type = "patch"

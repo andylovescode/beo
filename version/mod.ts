@@ -1,11 +1,22 @@
 /**
- * This is a minimal version manager
+ * This is a minimal version manager.
  *
  * @example
- * - initializing a repo: glhf
- * - releasing: `deno run jsr:@beo/version --release`
- * - adding a change: `deno run jsr:@beo/version --add`
- *
+ * To create a project, write the following to `changes.toml`
+ * ```toml
+ * [[change]]
+ * type = "release"
+ * ```
+ * @example
+ * To add a changelog entry for a package, run
+ * ```bash
+ * deno run jsr:@beo/version --add
+ * ```
+ * @example
+ * To release all packages and bump versions, run
+ * ```bash
+ * deno run jsr:@beo/version --release
+ * ```
  * @module beo_version
  */
 
