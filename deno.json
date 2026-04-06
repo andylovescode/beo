@@ -26,7 +26,7 @@
 			"description": "Adds a changelog entry"
 		},
 		"release": {
-			"command": "deno run -A @beo/version --release",
+			"command": "deno run -A @beo/version --release && deno task commit && git push",
 			"description": "Bumps all package versions"
 		}
 	},

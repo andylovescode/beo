@@ -66,3 +66,8 @@ type = "patch"
 
 [[change]]
 type = "release"
+
+[[change]]
+name = "Blocked adding a release when a release just occurred with no changes"
+package = "@beo/version"
+type = "patch"
