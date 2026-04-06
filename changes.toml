@@ -39,3 +39,6 @@ type = "patch"
 name = "Create a pretty dang fast signal engine"
 package = "@beo/signal"
 type = "minor"
+
+[[change]]
+type = "release"
