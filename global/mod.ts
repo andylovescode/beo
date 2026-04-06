@@ -1,7 +1,8 @@
 /**
- * This is a minimal variable stabiility tool
+ * This is a minimal variable stability tool.
  *
- * It lets you make sure that when the same value is referenced in two different places, even in different packages/versions, that it is the same.
+ * It lets a value be the same everywhere, across packages and versions.
+ * This is useful for making frameworks, and not a lot else.
  *
  * @example
  * ```typescript

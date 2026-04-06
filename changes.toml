@@ -24,3 +24,8 @@ type = "patch"
 
 [[change]]
 type = "release"
+
+[[change]]
+name = "Reword the module documentation"
+package = "@beo/global"
+type = "patch"
