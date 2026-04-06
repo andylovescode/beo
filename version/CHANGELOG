@@ -12,3 +12,6 @@
 
 ## 0.1.3
 	- (patch) Fix a bug where we bump package versions even if no changes are made
+
+## 0.1.4
+	- (patch) Blocked adding a release when a release just occurred with no changes
