@@ -22,6 +22,7 @@
  *
  * const x = state(0)
  * const doubled = derived(() => x() * 2)
+ * ```
  *
  * @example
  * Get the value of a signal

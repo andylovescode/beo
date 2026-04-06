@@ -74,3 +74,8 @@ type = "patch"
 
 [[change]]
 type = "release"
+
+[[change]]
+name = "Close the code fence on the main module documentation"
+package = "@beo/signal"
+type = "patch"
