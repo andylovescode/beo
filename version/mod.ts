@@ -29,10 +29,12 @@ const args = parseArgs(Deno.args, {
 	boolean: ["add", "release"],
 })
 
-if (args.add)
+if (args.add) {
 	await add()
+}
 
-if (args.release)
+if (args.release) {
 	await release()
+}
 
 await sync()

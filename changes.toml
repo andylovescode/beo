@@ -34,3 +34,8 @@ type = "patch"
 name = "Improve the documentation on JSR"
 package = "@beo/version"
 type = "patch"
+
+[[change]]
+name = "Create a pretty dang fast signal engine"
+package = "@beo/signal"
+type = "minor"

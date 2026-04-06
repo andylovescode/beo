@@ -32,8 +32,9 @@ export function releasePackage(pkg: Package) {
 	const scale = maxChangeSize(...pkg.unreleasedChanges.map((it) => it.type))
 	bumpVersion(pkg.version, scale)
 	pkg.changelog.push(`\n## ${printVersion(pkg.version)}`)
-	for (const change of pkg.unreleasedChanges)
+	for (const change of pkg.unreleasedChanges) {
 		pkg.changelog.push(`\t- (${change.type}) ${change.name}`)
+	}
 	pkg.unreleasedChanges = []
 }
 

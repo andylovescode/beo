@@ -35,7 +35,7 @@ export function getGlobalReference<T>(props: {
 	ref: string
 }): T {
 	// deno-lint-ignore no-explicit-any
-	const globalReferences = ((window as any)["@beo/global"] ??= {})
+	const globalReferences = ((globalThis as any)["@beo/global"] ??= {})
 	const key = `@${props.author}@${props.ref}~${props.version}`
 
 	return globalReferences[key] ??= props.default()

@@ -94,11 +94,13 @@
     }
   },
   "workspace": {
+    "dependencies": [
+      "jsr:@std/assert@^1.0.19"
+    ],
     "members": {
       "version": {
         "dependencies": [
           "jsr:@cliffy/prompt@1",
-          "jsr:@std/assert@^1.0.19",
           "jsr:@std/cli@^1.0.28",
           "jsr:@std/path@^1.1.4",
           "jsr:@std/toml@^1.0.11",

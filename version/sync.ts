@@ -11,8 +11,9 @@ export async function sync() {
 
 	for (const change of changes) {
 		if (change.type === "release") {
-			for (const pkg of packages)
+			for (const pkg of packages) {
 				releasePackage(pkg)
+			}
 			continue
 		}
 

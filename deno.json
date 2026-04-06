@@ -1,12 +1,12 @@
 {
 	"workspace": [
 		"./version",
-		"./global"
+		"./global",
+		"./signal"
 	],
 	"fmt": {
 		"useTabs": true,
-		"semiColons": false,
-		"useBraces": "preferNone"
+		"semiColons": false
 	},
 	"tasks": {
 		"ok": {
@@ -25,5 +25,8 @@
 			"command": "deno run -A @beo/version --release",
 			"description": "Bumps all package versions"
 		}
+	},
+	"imports": {
+		"@std/assert": "jsr:@std/assert@^1.0.19"
 	}
 }
