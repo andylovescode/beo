@@ -1,8 +1,13 @@
+
 [[change]]
 name = "Create a scrappy version manager"
 package = "@beo/version"
 type = "minor"
 
 [[change]]
-type = "release"
+name = "Create a scrappy global stability manager"
+package = "@beo/global"
+type = "minor"
 
+[[change]]
+type = "release"
