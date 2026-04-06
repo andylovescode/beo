@@ -11,3 +11,16 @@ type = "minor"
 
 [[change]]
 type = "release"
+
+[[change]]
+name = "Let JSR read the module documentation"
+package = "@beo/version"
+type = "patch"
+
+[[change]]
+name = "Let JSR read the module documentation"
+package = "@beo/global"
+type = "patch"
+
+[[change]]
+type = "release"

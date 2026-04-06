@@ -3,3 +3,6 @@
 
 ## 0.1.0
 	- (minor) Create a scrappy global stability manager
+
+## 0.1.1
+	- (patch) Let JSR read the module documentation

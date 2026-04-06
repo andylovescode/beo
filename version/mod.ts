@@ -1,13 +1,12 @@
 /**
- * @module
- *
- * # @beo/version
- *
  * This is a minimal version manager
  *
+ * @example
  * - initializing a repo: glhf
- * - releasing: deno run jsr:@beo/version --release
- * - adding a change: deno run jsr:@beo/version --add
+ * - releasing: `deno run jsr:@beo/version --release`
+ * - adding a change: `deno run jsr:@beo/version --add`
+ *
+ * @module beo_version
  */
 
 import { sync } from "./sync.ts"

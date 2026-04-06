@@ -1,14 +1,9 @@
 /**
- * @module
- *
- * # @beo/global
- *
  * This is a minimal variable stabiility tool
  *
  * It lets you make sure that when the same value is referenced in two different places, even in different packages/versions, that it is the same.
  *
- * ## Example
- *
+ * @example
  * ```typescript
  * const signalUsageCallbackStack = getGlobalReference({
  *     default() {
@@ -19,6 +14,8 @@
  *     ref: "signal-usage-callback"
  * })
  * ```
+ *
+ * @module global
  */
 
 /**
