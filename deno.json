@@ -10,7 +10,7 @@
 	},
 	"tasks": {
 		"ok": {
-			"command": "deno task version && deno fmt && deno lint --fix",
+			"command": "deno task version && deno test && deno fmt && deno lint --fix",
 			"description": "Get ready to commit"
 		},
 		"commit": {
