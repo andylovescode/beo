@@ -29,6 +29,7 @@ export function bumpVersion(version: Version, scale: ChangeSize) {
 }
 
 export function releasePackage(pkg: Package) {
+	if (pkg.unreleasedChanges.length === 0) return
 	const scale = maxChangeSize(...pkg.unreleasedChanges.map((it) => it.type))
 	bumpVersion(pkg.version, scale)
 	pkg.changelog.push(`\n## ${printVersion(pkg.version)}`)

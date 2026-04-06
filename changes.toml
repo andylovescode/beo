@@ -42,3 +42,11 @@ type = "minor"
 
 [[change]]
 type = "release"
+
+[[change]]
+name = "Fix a bug where we bump package versions even if no changes are made"
+package = "@beo/version"
+type = "patch"
+
+[[change]]
+type = "release"
