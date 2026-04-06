@@ -1,0 +1,29 @@
+{
+	"workspace": [
+		"./version",
+		"./global"
+	],
+	"fmt": {
+		"useTabs": true,
+		"semiColons": false,
+		"useBraces": "preferNone"
+	},
+	"tasks": {
+		"ok": {
+			"command": "deno task version && deno fmt && deno lint --fix",
+			"description": "Get ready to commit"
+		},
+		"version": {
+			"command": "deno run -A @beo/version",
+			"description": "Update the versions of all packages"
+		},
+		"change": {
+			"command": "deno run -A @beo/version --add",
+			"description": "Adds a changelog entry"
+		},
+		"release": {
+			"command": "deno run -A @beo/version --release",
+			"description": "Bumps all package versions"
+		}
+	}
+}
