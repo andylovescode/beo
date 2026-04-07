@@ -1,6 +1,19 @@
 /**
  * This is designed to be a portable protocol for DOM-esque platforms (mobile, the web, native)
  *
+ * @example
+ * ```typescript
+ * import { WebDOM } from "@beo/omni-web"
+ *
+ * const webDom = new WebDOM(document.body)
+ *
+ * const paragraph = webDom().createElement("p");
+ *
+ * paragraph.setAttribute("text", "hello, world!")
+ *
+ * webDom.getRootNode().setChildren([paragraph])
+ * ```
+ *
  * @module omni
  */
 
