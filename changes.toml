@@ -99,3 +99,6 @@ type = "minor"
 name = "Automatically print deno.json files in a standard order"
 package = "@beo/version"
 type = "minor"
+
+[[change]]
+type = "release"

@@ -6,3 +6,6 @@
 
 ## 0.1.1
 	- (patch) Add proper documentation
+
+## 0.1.2
+	- (patch) Close the code fence on the main module documentation
