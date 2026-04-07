@@ -127,3 +127,6 @@ type = "patch"
 name = "Fix code fence in documentation that broke visibility on JSR"
 package = "@beo/signal"
 type = "patch"
+
+[[change]]
+type = "release"
