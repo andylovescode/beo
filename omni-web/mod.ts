@@ -7,6 +7,9 @@
 import type { DOM, DOMNode } from "@beo/omni"
 import { error, must, todo } from "@beo/error"
 
+/**
+ * An omni interface for the web
+ */
 export class WebDOM implements DOM {
 	#rootNode: WebDOMNode
 
@@ -26,6 +29,9 @@ export class WebDOM implements DOM {
 	}
 }
 
+/**
+ * An omni interface for HTMLElements
+ */
 export class WebDOMNode implements DOMNode {
 	#real: HTMLElement
 
@@ -69,6 +75,9 @@ export class WebDOMNode implements DOMNode {
 	}
 }
 
+/**
+ * An omni interface for Text nodes
+ */
 export class WebDOMTextNode implements DOMNode {
 	#real: Text
 

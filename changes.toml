@@ -107,3 +107,8 @@ type = "release"
 name = "Add documentation"
 package = "@beo/error"
 type = "patch"
+
+[[change]]
+name = "Add documentation"
+package = "@beo/omni-web"
+type = "patch"
