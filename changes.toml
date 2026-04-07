@@ -112,3 +112,8 @@ type = "patch"
 name = "Add documentation"
 package = "@beo/omni-web"
 type = "patch"
+
+[[change]]
+name = "Add example for JSR"
+package = "@beo/omni-web"
+type = "patch"

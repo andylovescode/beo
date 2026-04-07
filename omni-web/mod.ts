@@ -1,6 +1,13 @@
 /**
  * A web omni backend
  *
+ * @example
+ * ```typescript
+ * import { WebDOM } from "@beo/omni-web"
+ *
+ * const webDom = new WebDOM(document.body)
+ * ```
+ *
  * @module omni_web
  */
 
