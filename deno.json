@@ -4,7 +4,8 @@
 		"./global",
 		"./signal",
 		"./omni",
-		"./omni-web"
+		"./omni-web",
+		"./error"
 	],
 	"fmt": {
 		"useTabs": true,

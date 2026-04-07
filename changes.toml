@@ -89,3 +89,8 @@ type = "minor"
 name = "Add an HTML omni implemtnation"
 package = "@beo/omni-web"
 type = "minor"
+
+[[change]]
+name = "Create a simple lil errors library"
+package = "@beo/error"
+type = "minor"
