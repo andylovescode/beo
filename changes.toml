@@ -102,3 +102,8 @@ type = "minor"
 
 [[change]]
 type = "release"
+
+[[change]]
+name = "Add documentation"
+package = "@beo/error"
+type = "patch"

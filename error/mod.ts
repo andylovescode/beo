@@ -25,6 +25,10 @@
  * @module error
  */
 
+/**
+ * Throws an Error
+ * @param message the error message
+ */
 export function error(message: string): never {
 	throw new Error(message)
 }
@@ -36,6 +40,11 @@ class ValidationError extends Error {
 	}
 }
 
+/**
+ * Throws a ValidationError if the condition is falsy
+ * @param condition The condition to check for
+ * @param message The error message
+ */
 export function must(condition: any, message: string): asserts condition {
 	if (!condition) {
 		throw new ValidationError(message)
@@ -49,6 +58,10 @@ class NotImplementedError extends Error {
 	}
 }
 
+/**
+ * Throws a NotImplementedError
+ * @param message The error to throw
+ */
 export function todo(message: string): never {
 	throw new NotImplementedError(message)
 }
