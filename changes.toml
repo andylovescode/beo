@@ -122,3 +122,8 @@ type = "patch"
 name = "Add documentation for JSR"
 package = "@beo/omni"
 type = "patch"
+
+[[change]]
+name = "Fix code fence in documentation that broke visibility on JSR"
+package = "@beo/signal"
+type = "patch"

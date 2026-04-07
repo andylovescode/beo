@@ -34,6 +34,7 @@
  * console.log(x()) // 0
  *
  * x.set(2)
+ * ```
  *
  * @example
  * Subscribe to signal changes
