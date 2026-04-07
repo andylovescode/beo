@@ -49,6 +49,6 @@ class NotImplementedError extends Error {
 	}
 }
 
-export function todo(message: string) {
+export function todo(message: string): never {
 	throw new NotImplementedError(message)
 }

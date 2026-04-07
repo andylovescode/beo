@@ -5,6 +5,7 @@
  */
 
 import type { DOM, DOMNode } from "@beo/omni"
+import { error, must, todo } from "@beo/error"
 
 export class WebDOM implements DOM {
 	#rootNode: WebDOMNode
@@ -40,11 +41,11 @@ export class WebDOMNode implements DOMNode {
 		const children: Node[] = []
 
 		for (const child of newChildren) {
-			if (
-				!(child instanceof WebDOMNode) && !(child instanceof WebDOMTextNode)
-			) {
-				throw new Error("Expected a WebDOMNode, did not get that")
-			}
+			must(
+				(child instanceof WebDOMNode) || (child instanceof WebDOMTextNode),
+				"child must be a web node",
+			)
+			children.push(child.getReal())
 		}
 
 		this.#real.replaceChildren(...children)
@@ -54,13 +55,17 @@ export class WebDOMNode implements DOMNode {
 		_key: string,
 		_callback: (value: any) => void,
 	): () => void {
-		throw new Error("not implemented")
+		todo("addValueEventListener not implemented")
 	}
 
 	addEventListener(key: string, callback: (value: any) => void): () => void {
 		this.#real.addEventListener(key, callback)
 
 		return () => this.#real.removeEventListener(key, callback)
+	}
+
+	getReal(): HTMLElement {
+		return this.#real
 	}
 }
 
@@ -71,23 +76,25 @@ export class WebDOMTextNode implements DOMNode {
 		this.#real = real
 	}
 
+	getReal(): Text {
+		return this.#real
+	}
+
 	setAttribute(key: string, value: any): void {
-		if (key === "text") {
-			this.#real.textContent = value
-		} else {
-			throw new Error("invalid key")
-		}
+		must(key === "text", "key must be text")
+
+		this.#real.textContent = value
 	}
 
 	setChildren(_newChildren: DOMNode[]): void {
-		throw new Error("cannot replace children on a text node")
+		error("cannot replace children on a text node")
 	}
 
 	addValueEventListener(
 		_key: string,
 		_callback: (value: any) => void,
 	): () => void {
-		throw new Error("cannot listen to attributes on a text node")
+		error("cannot listen to attributes on a text node")
 	}
 
 	addEventListener(key: string, callback: (value: any) => void): () => void {
