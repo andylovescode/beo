@@ -26,5 +26,34 @@ export async function getPackagesInWorkspace() {
 			packages.push(await packageFromJsonPath(path))
 		}
 	}
+
+	await Deno.writeTextFile("./deno.json", printDenoJson(denoJson))
+
 	return packages
+}
+
+export function printDenoJson(json: DenoJson): string {
+	let keyOrder = [
+		"name",
+		"license",
+		"version",
+		"workspace",
+		"import",
+		"exports",
+		"tasks",
+		"compilerOptions",
+		"fmt",
+		"lint",
+		...Object.keys(json).toSorted(),
+	]
+
+	keyOrder = keyOrder.filter((it) => it in json)
+
+	const cleaned: Record<string, any> = {}
+
+	for (const key of keyOrder) {
+		cleaned[key] = (json as any)[key]
+	}
+
+	return JSON.stringify(cleaned, undefined, "\t")
 }

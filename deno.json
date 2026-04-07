@@ -7,17 +7,6 @@
 		"./omni-web",
 		"./error"
 	],
-	"fmt": {
-		"useTabs": true,
-		"semiColons": false
-	},
-	"lint": {
-		"rules": {
-			"exclude": [
-				"no-explicit-any"
-			]
-		}
-	},
 	"tasks": {
 		"ok": {
 			"command": "deno task version && deno test && deno fmt && deno lint --fix",
@@ -38,6 +27,17 @@
 		"release": {
 			"command": "deno run -A @beo/version --release && deno task ok && git add . && git commit -m \"chore: release\" && git push",
 			"description": "Bumps all package versions"
+		}
+	},
+	"fmt": {
+		"useTabs": true,
+		"semiColons": false
+	},
+	"lint": {
+		"rules": {
+			"exclude": [
+				"no-explicit-any"
+			]
 		}
 	},
 	"imports": {

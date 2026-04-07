@@ -1,6 +1,6 @@
 import { resolve } from "node:path"
 import { type Change, readChangelog } from "./change.ts"
-import { getPackagesInWorkspace } from "./deno.ts"
+import { getPackagesInWorkspace, printDenoJson } from "./deno.ts"
 import { type Package, releasePackage } from "./pkg.ts"
 import { printVersion } from "./version.ts"
 
@@ -33,7 +33,7 @@ export async function sync() {
 		pkg.json.version = printVersion(pkg.version)
 		await Deno.writeTextFile(
 			pkg.path,
-			JSON.stringify(pkg.json, undefined, "\t"),
+			printDenoJson(pkg.json),
 		)
 		await Deno.writeTextFile(
 			resolve(pkg.path, "../CHANGELOG"),

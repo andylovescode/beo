@@ -94,3 +94,8 @@ type = "minor"
 name = "Create a simple lil errors library"
 package = "@beo/error"
 type = "minor"
+
+[[change]]
+name = "Automatically print deno.json files in a standard order"
+package = "@beo/version"
+type = "minor"

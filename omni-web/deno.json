@@ -1,7 +1,7 @@
 {
 	"name": "@beo/omni-web",
-	"version": "0.0.0",
 	"license": "WTFPL",
+	"version": "0.0.0",
 	"exports": "./mod.ts",
 	"compilerOptions": {
 		"lib": [

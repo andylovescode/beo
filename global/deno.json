@@ -1,6 +1,6 @@
 {
 	"name": "@beo/global",
-	"version": "0.1.3",
 	"license": "WTFPL",
+	"version": "0.1.3",
 	"exports": "./mod.ts"
 }
