@@ -79,3 +79,13 @@ type = "release"
 name = "Close the code fence on the main module documentation"
 package = "@beo/signal"
 type = "patch"
+
+[[change]]
+name = "Add a framework-independent DOM library"
+package = "@beo/omni"
+type = "minor"
+
+[[change]]
+name = "Add an HTML omni implemtnation"
+package = "@beo/omni-web"
+type = "minor"

@@ -2,11 +2,20 @@
 	"workspace": [
 		"./version",
 		"./global",
-		"./signal"
+		"./signal",
+		"./omni",
+		"./omni-web"
 	],
 	"fmt": {
 		"useTabs": true,
 		"semiColons": false
+	},
+	"lint": {
+		"rules": {
+			"exclude": [
+				"no-explicit-any"
+			]
+		}
 	},
 	"tasks": {
 		"ok": {
