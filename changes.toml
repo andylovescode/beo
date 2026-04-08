@@ -180,3 +180,8 @@ type = "release"
 name = "Improve types"
 package = "@beo/omni"
 type = "patch"
+
+[[change]]
+name = "BREAKING: Make VDOMElement take an element name instead of a DOMNode"
+package = "@beo/vdom"
+type = "major"

@@ -188,21 +188,33 @@ export class VDOMFragment extends VDOMNode {
  * A vdom version of a real node
  */
 export class VDOMElement extends VDOMNode {
-	node: DOMNode
+	#node: DOMNode | undefined
 
-	constructor(node: DOMNode) {
+	name: string
+
+	get node(): DOMNode | undefined {
+		if (!this.#node && this.dom) {
+			this.#node = this.dom.createNode(this.name)
+			this.onUpdateChildren()
+		}
+		return this.#node
+	}
+
+	constructor(name: string) {
 		super()
-
-		this.node = node
+		this.name = name
 	}
 
 	override onUpdateChildren(): void {
-		this.node.setChildren(
+		this.node?.setChildren(
 			this.children.flatMap((it) => it.getEffectiveChildren()),
 		)
 	}
 
 	override getEffectiveChildren(): DOMNode[] {
-		return [this.node]
+		if (this.node) {
+			return [this.node]
+		}
+		return []
 	}
 }
