@@ -39,10 +39,15 @@ export function releasePackage(pkg: Package) {
 	pkg.unreleasedChanges = []
 }
 
-export async function packageFromJsonPath(path: string): Promise<Package> {
+export async function packageFromJsonPath(
+	path: string,
+): Promise<Package | undefined> {
 	const json: NamedPackage = JSON.parse(
 		await Deno.readTextFile(path),
 	)
+
+	if (!json.name) return undefined
+
 	return {
 		path,
 		json,

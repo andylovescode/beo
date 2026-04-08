@@ -23,7 +23,11 @@ export async function getPackagesInWorkspace() {
 		for await (const detection of glob(workspaceEntry)) {
 			const path = resolve(detection, "deno.json")
 
-			packages.push(await packageFromJsonPath(path))
+			const pkg = await packageFromJsonPath(path)
+
+			if (!pkg) continue
+
+			packages.push(pkg)
 		}
 	}
 

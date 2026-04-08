@@ -130,3 +130,8 @@ type = "patch"
 
 [[change]]
 type = "release"
+
+[[change]]
+name = "Fix support for packages without names"
+package = "@beo/version"
+type = "patch"
