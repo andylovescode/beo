@@ -25,7 +25,15 @@
  * An implementation of a DOM, whether it be on the web, mobile, etc.
  */
 export interface DOM {
-	createNode(nodeType: string & object | "text"): DOMNode
+	/**
+	 * Create a node of a given type
+	 * @param nodeType an element name, or the special element 'text'
+	 */
+	createNode(nodeType: string): DOMNode
+
+	/**
+	 * Get the root node of the DOM
+	 */
 	getRootNode(): DOMNode
 }
 

@@ -175,3 +175,8 @@ type = "minor"
 
 [[change]]
 type = "release"
+
+[[change]]
+name = "Improve types"
+package = "@beo/omni"
+type = "patch"
