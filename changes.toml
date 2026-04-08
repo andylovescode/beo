@@ -164,3 +164,6 @@ type = "release"
 name = "Fix bugs in documentation because I'm dumb"
 package = "@beo/vdom"
 type = "patch"
+
+[[change]]
+type = "release"
