@@ -143,3 +143,8 @@ type = "patch"
 
 [[change]]
 type = "release"
+
+[[change]]
+name = "Create a teeny virtual dom library"
+package = "@beo/vdom"
+type = "minor"

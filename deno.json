@@ -6,7 +6,8 @@
 		"./omni",
 		"./omni-web",
 		"./error",
-		"./examples/*"
+		"./examples/*",
+		"./vdom"
 	],
 	"tasks": {
 		"ok": {

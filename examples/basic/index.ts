@@ -1,13 +1,22 @@
 import { WebDOM } from "@beo/omni-web"
+import { VDOMElement } from "@beo/vdom"
 
 const webDom = new WebDOM(document.body)
 
-const paragraph = webDom.createNode("p")
+const root = new VDOMElement(webDom.getRootNode())
 
-const text = webDom.createNode("text")
+const paragraph = new VDOMElement(webDom.createNode("p"))
 
-text.setAttribute("text", "hello, world!")
+const text = new VDOMElement(webDom.createNode("text"))
 
-paragraph.setChildren([text])
+text.node.setAttribute("text", "hello, world!")
 
-webDom.getRootNode().setChildren([paragraph])
+paragraph.children = [text]
+
+root.children = [paragraph]
+
+console.log(root.isLiving)
+
+root.isPinnedRoot = true
+
+console.log(paragraph.isLiving)
