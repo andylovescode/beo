@@ -1,6 +1,6 @@
 {
 	"tasks": {
-		"dev": "deno bundle --watch main.html --outdir build & deno run --allow-net --allow-read jsr:@std/http/file-server"
+		"dev": "deno bundle --watch index.html --outdir build & deno run --allow-net --allow-read jsr:@std/http/file-server ./build"
 	},
 	"imports": {
 		"@std/assert": "jsr:@std/assert@1"
