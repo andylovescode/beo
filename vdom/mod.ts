@@ -58,6 +58,7 @@ export abstract class VDOMNode {
 	 */
 	abstract getEffectiveChildren(): DOMNode[]
 
+	//#region life
 	set isLiving(value: boolean) {
 		if (this.#isLiving === value) return
 
@@ -102,6 +103,20 @@ export abstract class VDOMNode {
 			child.isLiving = this.#isLiving || this.#isPinnedRoot
 		}
 	}
+
+	/**
+	 * Register a callback for when the living status of this node changes.
+	 * @param listener The listener to add
+	 * @returns A cleanup method
+	 */
+	addLivingListener(listener: IsLivingListener): () => void {
+		this.#isLivingListeners.add(listener)
+
+		return () => {
+			this.#isLivingListeners.delete(listener)
+		}
+	}
+	//#endregion
 
 	//#region dom reference
 	/**

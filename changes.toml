@@ -167,3 +167,8 @@ type = "patch"
 
 [[change]]
 type = "release"
+
+[[change]]
+name = "Add public-facing living listeners API"
+package = "@beo/vdom"
+type = "minor"
