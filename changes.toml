@@ -159,3 +159,8 @@ type = "patch"
 
 [[change]]
 type = "release"
+
+[[change]]
+name = "Fix bugs in documentation because I'm dumb"
+package = "@beo/vdom"
+type = "patch"

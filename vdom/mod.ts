@@ -24,6 +24,7 @@
  * console.log(root.isLiving)
  * root.isPinnedRoot = true
  * console.log(paragraph.isLiving)
+ * ```
  *
  * @module vdom
  */
@@ -35,6 +36,9 @@ import type { DOM, DOMNode } from "@beo/omni"
  */
 export type IsLivingListener = (value: boolean) => void
 
+/**
+ * A node in the virtual DOM
+ */
 export abstract class VDOMNode {
 	#parent: VDOMNode | undefined = undefined
 	#children: VDOMNode[] = []
