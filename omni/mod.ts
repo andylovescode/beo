@@ -7,9 +7,13 @@
  *
  * const webDom = new WebDOM(document.body)
  *
- * const paragraph = webDom().createElement("p");
+ * const paragraph = webDom.createNode("p");
  *
- * paragraph.setAttribute("text", "hello, world!")
+ * const text = webDom.createNode("text")
+ *
+ * text.setAttribute("text", "hello, world!")
+ *
+ * paragraph.setChildren([text])
  *
  * webDom.getRootNode().setChildren([paragraph])
  * ```
