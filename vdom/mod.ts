@@ -190,19 +190,39 @@ export class VDOMFragment extends VDOMNode {
 export class VDOMElement extends VDOMNode {
 	#node: DOMNode | undefined
 
-	name: string
+	#name: string
+
+	#deferred: ((node: DOMNode) => void)[] = []
+
+	/**
+	 * Runs a given callback once this vdom node has a real counterpart
+	 * @param callback The callback to run
+	 */
+	defer(callback: (node: DOMNode) => void) {
+		this.#deferred.push(callback)
+		this.#processDeferred()
+	}
+
+	#processDeferred() {
+		if (!this.#node) return
+
+		this.#deferred.forEach((it) => it(this.#node!))
+
+		this.#deferred = []
+	}
 
 	get node(): DOMNode | undefined {
 		if (!this.#node && this.dom) {
-			this.#node = this.dom.createNode(this.name)
+			this.#node = this.dom.createNode(this.#name)
 			this.onUpdateChildren()
+			this.#processDeferred()
 		}
 		return this.#node
 	}
 
 	constructor(name: string) {
 		super()
-		this.name = name
+		this.#name = name
 	}
 
 	override onUpdateChildren(): void {

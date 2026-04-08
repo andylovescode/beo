@@ -185,3 +185,8 @@ type = "patch"
 name = "BREAKING: Make VDOMElement take an element name instead of a DOMNode"
 package = "@beo/vdom"
 type = "major"
+
+[[change]]
+name = "Add `defer` api"
+package = "@beo/vdom"
+type = "minor"
