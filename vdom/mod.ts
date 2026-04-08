@@ -1,5 +1,31 @@
 /**
  * A virtual dom layer around omni
+ *
+ * > [!IMPORTANT]
+ * >
+ * > This is a very low-level library, consider not using it.
+ *
+ * @example
+ * ```typescript
+ * import { WebDOM } from "@beo/omni-web"
+ * import { VDOMElement } from "@beo/vdom"
+ *
+ * const webDom = new WebDOM(document.body)
+ * const root = new VDOMElement(webDom.getRootNode())
+ * const paragraph = new VDOMElement(webDom.createNode("p"))
+ * const text = new VDOMElement(webDom.createNode("text"))
+ *
+ * text.node.setAttribute("text", "hello, world!")
+ *
+ * paragraph.children = [text]
+ *
+ * root.children = [paragraph]
+ *
+ * console.log(root.isLiving)
+ * root.isPinnedRoot = true
+ * console.log(paragraph.isLiving)
+ *
+ * @module vdom
  */
 
 import type { DOM, DOMNode } from "@beo/omni"
@@ -19,7 +45,13 @@ export abstract class VDOMNode {
 
 	#isLivingListeners: Set<IsLivingListener> = new Set()
 
+	/**
+	 * Called when the list of children changes
+	 */
 	abstract onUpdateChildren(): void
+	/**
+	 * Return the list of real dom nodes that this represents
+	 */
 	abstract getEffectiveChildren(): DOMNode[]
 
 	set isLiving(value: boolean) {
@@ -34,6 +66,9 @@ export abstract class VDOMNode {
 		this.#updateChildrenLiving()
 	}
 
+	/**
+	 * Is this a descendent of an isPinnedRoot element
+	 */
 	get isLiving(): boolean {
 		return this.#isLiving
 	}
@@ -51,6 +86,9 @@ export abstract class VDOMNode {
 		this.#updateChildrenLiving()
 	}
 
+	/**
+	 * Should the descendents of this have isLiving be true
+	 */
 	get isPinnedRoot(): boolean {
 		return this.#isPinnedRoot
 	}
@@ -62,6 +100,9 @@ export abstract class VDOMNode {
 	}
 
 	//#region dom reference
+	/**
+	 * A reference to the DOM api associated with this element
+	 */
 	get dom(): DOM | undefined {
 		if (!this.#pinnedDom) {
 			this.#pinnedDom = this.#parent?.dom
@@ -76,6 +117,9 @@ export abstract class VDOMNode {
 	//#endregion
 
 	//#region parent hierarchy
+	/**
+	 * The parent of this element (read-only)
+	 */
 	get parent(): VDOMNode | undefined {
 		return this.#parent
 	}
@@ -99,12 +143,18 @@ export abstract class VDOMNode {
 		this.onUpdateChildren()
 	}
 
+	/**
+	 * The children of this element
+	 */
 	get children(): VDOMNode[] {
 		return this.#children
 	}
 	//#endregion
 }
 
+/**
+ * A node with no existence in the real dom, but its children are direct children of the first non-fragment parent
+ */
 export class VDOMFragment extends VDOMNode {
 	override onUpdateChildren(): void {
 		this.parent?.onUpdateChildren()
@@ -115,6 +165,9 @@ export class VDOMFragment extends VDOMNode {
 	}
 }
 
+/**
+ * A vdom version of a real node
+ */
 export class VDOMElement extends VDOMNode {
 	node: DOMNode
 

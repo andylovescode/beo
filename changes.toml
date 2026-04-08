@@ -151,3 +151,8 @@ type = "minor"
 
 [[change]]
 type = "release"
+
+[[change]]
+name = "Write documentation"
+package = "@beo/vdom"
+type = "patch"
