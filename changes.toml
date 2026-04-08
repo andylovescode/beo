@@ -148,3 +148,6 @@ type = "release"
 name = "Create a teeny virtual dom library"
 package = "@beo/vdom"
 type = "minor"
+
+[[change]]
+type = "release"
