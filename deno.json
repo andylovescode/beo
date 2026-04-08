@@ -5,7 +5,8 @@
 		"./signal",
 		"./omni",
 		"./omni-web",
-		"./error"
+		"./error",
+		"./examples/*"
 	],
 	"tasks": {
 		"ok": {
@@ -27,6 +28,10 @@
 		"release": {
 			"command": "deno run -A @beo/version --release && deno task ok && git add . && git commit -m \"chore: release\" && git push",
 			"description": "Bumps all package versions"
+		},
+		"basic:dev": {
+			"command": "deno task --cwd=./examples/basic dev",
+			"description": "Run the basic application"
 		}
 	},
 	"fmt": {

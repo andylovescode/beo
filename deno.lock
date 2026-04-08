@@ -98,6 +98,11 @@
       "jsr:@std/assert@^1.0.19"
     ],
     "members": {
+      "examples/basic": {
+        "dependencies": [
+          "jsr:@std/assert@1"
+        ]
+      },
       "version": {
         "dependencies": [
           "jsr:@cliffy/prompt@1",
