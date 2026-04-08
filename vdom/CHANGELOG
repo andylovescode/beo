@@ -9,3 +9,6 @@
 
 ## 0.1.2
 	- (patch) Fix bugs in documentation because I'm dumb
+
+## 0.2.0
+	- (minor) Add public-facing living listeners API
