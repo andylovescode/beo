@@ -7,7 +7,8 @@
 		"./omni-web",
 		"./error",
 		"./examples/*",
-		"./vdom"
+		"./vdom",
+		"./framework"
 	],
 	"tasks": {
 		"ok": {
@@ -23,7 +24,7 @@
 			"description": "Update the versions of all packages"
 		},
 		"change": {
-			"command": "deno run -A @beo/version --add",
+			"command": "deno run -A @beo/version --add && deno task ok",
 			"description": "Adds a changelog entry"
 		},
 		"release": {
