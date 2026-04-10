@@ -190,7 +190,7 @@ export class VDOMFragment extends VDOMNode {
 export class VDOMElement extends VDOMNode {
 	#node: DOMNode | undefined
 
-	#name: string
+	#name: string = ""
 
 	#deferred: ((node: DOMNode) => void)[] = []
 
@@ -220,9 +220,13 @@ export class VDOMElement extends VDOMNode {
 		return this.#node
 	}
 
-	constructor(name: string) {
+	constructor(name: string | DOMNode) {
 		super()
-		this.#name = name
+		if (typeof name === "string") {
+			this.#name = name
+		} else {
+			this.#node = name
+		}
 	}
 
 	override onUpdateChildren(): void {
