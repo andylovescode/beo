@@ -1,0 +1,9 @@
+{
+	"name": "@beo/framework",
+	"license": "WTFPL",
+	"version": "0.0.0",
+	"exports": {
+		".": "./mod.ts",
+		"./composition": "./composition.ts"
+	}
+}

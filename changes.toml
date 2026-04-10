@@ -195,3 +195,8 @@ type = "minor"
 name = "Don't throw when setting no children on a text node"
 package = "@beo/omni-web"
 type = "patch"
+
+[[change]]
+name = "Add internal composition API"
+package = "@beo/framework"
+type = "minor"
