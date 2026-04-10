@@ -31,6 +31,8 @@
 
 import type { DOM, DOMNode } from "@beo/omni"
 
+const INTERNAL_ENABLE_DEBUG = false
+
 /**
  * A callback for if a VDOMNode is living or not
  */
@@ -42,7 +44,7 @@ export type IsLivingListener = (value: boolean) => void
 export abstract class VDOMNode {
 	#parent: VDOMNode | undefined = undefined
 	#children: VDOMNode[] = []
-	#pinnedDom: DOM | undefined = undefined
+	#dom: DOM | undefined = undefined
 
 	#isPinnedRoot: boolean = false
 	#isLiving = false
@@ -57,6 +59,10 @@ export abstract class VDOMNode {
 	 * Return the list of real dom nodes that this represents
 	 */
 	abstract getEffectiveChildren(): DOMNode[]
+	/**
+	 * Called when the DOM reference updates
+	 */
+	abstract onUpdateDom(): void
 
 	//#region life
 	set isLiving(value: boolean) {
@@ -117,24 +123,6 @@ export abstract class VDOMNode {
 		}
 	}
 	//#endregion
-
-	//#region dom reference
-	/**
-	 * A reference to the DOM api associated with this element
-	 */
-	get dom(): DOM | undefined {
-		if (!this.#pinnedDom) {
-			this.#pinnedDom = this.#parent?.dom
-		}
-
-		return this.#pinnedDom
-	}
-
-	set dom(value: DOM | undefined) {
-		this.#pinnedDom = value
-	}
-	//#endregion
-
 	//#region parent hierarchy
 	/**
 	 * The parent of this element (read-only)
@@ -158,6 +146,7 @@ export abstract class VDOMNode {
 		})
 
 		this.#updateChildrenLiving()
+		this.#updateChildrenDom()
 
 		this.onUpdateChildren()
 	}
@@ -167,6 +156,26 @@ export abstract class VDOMNode {
 	 */
 	get children(): VDOMNode[] {
 		return this.#children
+	}
+	//#endregion
+	//#region dom
+	#updateChildrenDom() {
+		if (!this.#dom) return
+		for (const child of this.#children) {
+			if (child.dom) continue
+			child.dom = this.#dom
+		}
+	}
+
+	get dom(): DOM | undefined {
+		return this.#dom
+	}
+
+	set dom(value: DOM | undefined) {
+		if (!value) return
+		this.#dom ??= value
+		this.#updateChildrenDom()
+		this.onUpdateDom()
 	}
 	//#endregion
 }
@@ -179,8 +188,14 @@ export class VDOMFragment extends VDOMNode {
 		this.parent?.onUpdateChildren()
 	}
 
+	override onUpdateDom(): void {}
+
 	override getEffectiveChildren(): DOMNode[] {
 		return this.children.flatMap((it) => it.getEffectiveChildren())
+	}
+
+	override toString() {
+		return `<${this.children}>`
 	}
 }
 
@@ -188,7 +203,7 @@ export class VDOMFragment extends VDOMNode {
  * A vdom version of a real node
  */
 export class VDOMElement extends VDOMNode {
-	#node: DOMNode | undefined
+	node: DOMNode | undefined
 
 	#name: string = ""
 
@@ -204,20 +219,34 @@ export class VDOMElement extends VDOMNode {
 	}
 
 	#processDeferred() {
-		if (!this.#node) return
+		if (!this.node) return
 
-		this.#deferred.forEach((it) => it(this.#node!))
+		this.#deferred.forEach((it) => it(this.node!))
 
 		this.#deferred = []
 	}
 
-	get node(): DOMNode | undefined {
-		if (!this.#node && this.dom) {
-			this.#node = this.dom.createNode(this.#name)
+	#tryInitNode() {
+		INTERNAL_ENABLE_DEBUG &&
+			console.log(
+				"tryInitNode",
+				this.toString(),
+				!this.node && this.dom && true,
+			)
+		if (!this.node && this.dom) {
+			this.node = this.dom.createNode(this.#name)
 			this.onUpdateChildren()
+			this.parent?.onUpdateChildren()
 			this.#processDeferred()
 		}
-		return this.#node
+	}
+
+	override onUpdateDom(): void {
+		this.#tryInitNode()
+	}
+
+	override toString() {
+		return `${this.#name || this.node}(${this.children})`
 	}
 
 	constructor(name: string | DOMNode) {
@@ -225,7 +254,7 @@ export class VDOMElement extends VDOMNode {
 		if (typeof name === "string") {
 			this.#name = name
 		} else {
-			this.#node = name
+			this.node = name
 		}
 	}
 
@@ -237,8 +266,12 @@ export class VDOMElement extends VDOMNode {
 
 	override getEffectiveChildren(): DOMNode[] {
 		if (this.node) {
+			INTERNAL_ENABLE_DEBUG &&
+				console.log("effective children", this.toString())
 			return [this.node]
 		}
+		INTERNAL_ENABLE_DEBUG &&
+			console.log("no effective children", this.toString())
 		return []
 	}
 }
