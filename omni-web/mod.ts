@@ -102,7 +102,8 @@ export class WebDOMTextNode implements DOMNode {
 		this.#real.textContent = value
 	}
 
-	setChildren(_newChildren: DOMNode[]): void {
+	setChildren(newChildren: DOMNode[]): void {
+		if (newChildren.length === 0) return
 		error("cannot replace children on a text node")
 	}
 

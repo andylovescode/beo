@@ -190,3 +190,8 @@ type = "minor"
 name = "Add `defer` api"
 package = "@beo/vdom"
 type = "minor"
+
+[[change]]
+name = "Don't throw when setting no children on a text node"
+package = "@beo/omni-web"
+type = "patch"
