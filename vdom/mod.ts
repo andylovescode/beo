@@ -185,6 +185,9 @@ export abstract class VDOMNode {
  * A node with no existence in the real dom, but its children are direct children of the first non-fragment parent
  */
 export class VDOMFragment extends VDOMNode {
+	/**for type inference */
+	isVDOMFragment: true = true
+
 	override onUpdateChildren(): void {
 		this.parent?.onUpdateChildren()
 	}
@@ -209,6 +212,9 @@ export class VDOMElement extends VDOMNode {
 	#name: string = ""
 
 	#deferred: ((node: DOMNode) => void)[] = []
+
+	/**for type inference */
+	isVDOMElement: true = true
 
 	/**
 	 * Runs a given callback once this vdom node has a real counterpart

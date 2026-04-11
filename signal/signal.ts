@@ -68,7 +68,7 @@ export function subscribe<T>(
  */
 export function createBaseSignal<SignalType extends Signal<T>, T>(
 	signal: {
-		[key in keyof SignalType]: SignalType[key]
+		[key in Exclude<keyof SignalType, "isSignal">]: SignalType[key]
 	},
 ): SignalType {
 	const result = (() => {
@@ -76,6 +76,7 @@ export function createBaseSignal<SignalType extends Signal<T>, T>(
 		return signal.$_getNoReact()
 	}) as SignalType
 	Object.defineProperties(result, Object.getOwnPropertyDescriptors(signal))
+	result.isSignal = true
 	return result
 }
 //#endregion
@@ -124,4 +125,7 @@ export interface Signal<T> {
 	 * Converts to a string
 	 */
 	toString(): string
+
+	/**For cross-import type checking */
+	isSignal: true
 }

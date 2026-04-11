@@ -215,3 +215,18 @@ type = "minor"
 name = "Add onMount and compose_signalAttribute APIs"
 package = "@beo/framework"
 type = "minor"
+
+[[change]]
+name = "Add small type-checking library"
+package = "@beo/duck"
+type = "minor"
+
+[[change]]
+name = "Add mandatory isSignal field"
+package = "@beo/signal"
+type = "minor"
+
+[[change]]
+name = "Add type-inference fields to VDOMNode subclasses"
+package = "@beo/vdom"
+type = "minor"

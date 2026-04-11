@@ -1,0 +1,6 @@
+{
+	"name": "@beo/duck",
+	"license": "WTFPL",
+	"version": "0.0.0",
+	"exports": "./mod.ts"
+}
