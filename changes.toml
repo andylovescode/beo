@@ -205,3 +205,8 @@ type = "minor"
 name = "Create a simple logging framework"
 package = "@beo/log"
 type = "minor"
+
+[[change]]
+name = "Add setAttribute to VDOMElement"
+package = "@beo/vdom"
+type = "minor"

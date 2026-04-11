@@ -239,6 +239,12 @@ export class VDOMElement extends VDOMNode {
 		}
 	}
 
+	setAttribute(key: string, value: any) {
+		this.defer((node) => {
+			node.setAttribute(key, value)
+		})
+	}
+
 	override onUpdateDom(): void {
 		this.#tryInitNode()
 	}
