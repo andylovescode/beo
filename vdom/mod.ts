@@ -30,8 +30,9 @@
  */
 
 import type { DOM, DOMNode } from "@beo/omni"
+import { Logger } from "@beo/log"
 
-const INTERNAL_ENABLE_DEBUG = false
+const logger = new Logger("@beo/vdom")
 
 /**
  * A callback for if a VDOMNode is living or not
@@ -227,12 +228,9 @@ export class VDOMElement extends VDOMNode {
 	}
 
 	#tryInitNode() {
-		INTERNAL_ENABLE_DEBUG &&
-			console.log(
-				"tryInitNode",
-				this.toString(),
-				!this.node && this.dom && true,
-			)
+		logger.debug(
+			["tryInitNode", this.toString(), !this.node && this.dom && true],
+		)
 		if (!this.node && this.dom) {
 			this.node = this.dom.createNode(this.#name)
 			this.onUpdateChildren()
@@ -245,7 +243,7 @@ export class VDOMElement extends VDOMNode {
 		this.#tryInitNode()
 	}
 
-	override toString() {
+	override toString(): string {
 		return `${this.#name || this.node}(${this.children})`
 	}
 
@@ -266,12 +264,10 @@ export class VDOMElement extends VDOMNode {
 
 	override getEffectiveChildren(): DOMNode[] {
 		if (this.node) {
-			INTERNAL_ENABLE_DEBUG &&
-				console.log("effective children", this.toString())
+			logger.debug(["effective children", this.toString()])
 			return [this.node]
 		}
-		INTERNAL_ENABLE_DEBUG &&
-			console.log("no effective children", this.toString())
+		logger.debug(["no effective children", this.toString()])
 		return []
 	}
 }
