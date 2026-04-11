@@ -7,6 +7,7 @@
 import { VDOMElement, VDOMFragment, type VDOMNode } from "@beo/vdom"
 import { must } from "@beo/error"
 import type { Signal, SignalCallbacks } from "@beo/signal"
+import { is } from "@beo/duck"
 import { onMount } from "./component.ts"
 
 /**
@@ -51,7 +52,7 @@ export function compose_staticAttribute(
 	return function (state: CompositionState) {
 		must(state.node, "no node introduced in composition chain")
 		must(
-			state.node instanceof VDOMElement,
+			is<VDOMElement>(state.node, "isVDOMElement"),
 			"node introduced in composition chain is not an element",
 		)
 
@@ -86,7 +87,7 @@ export function compose_signalAttribute(
 	return function (state: CompositionState) {
 		must(state.node, "no node introduced in composition chain")
 		must(
-			state.node instanceof VDOMElement,
+			is<VDOMElement>(state.node, "isVDOMElement"),
 			"attempted to assign attributes to a non-element",
 		)
 
