@@ -6,6 +6,8 @@
 
 import { VDOMElement, VDOMFragment, type VDOMNode } from "@beo/vdom"
 import { must } from "@beo/error"
+import type { Signal, SignalCallbacks } from "@beo/signal"
+import { onMount } from "./component.ts"
 
 /**
  * The internal state that gets passed between composers
@@ -53,7 +55,7 @@ export function compose_staticAttribute(
 			"node introduced in composition chain is not an element",
 		)
 
-		state.node.defer((node) => node.setAttribute(key, value))
+		state.node.setAttribute(key, value)
 	}
 }
 
@@ -68,6 +70,40 @@ export function compose_staticChildren(
 		must(state.node, "no node introduced in composition chain")
 
 		state.node.children = children
+	}
+}
+
+/**
+ * Enters a signal-backed attribute into a composition.
+ * @param key The key to assign to
+ * @param signal The signal to determine the attribute value
+ * @returns A composition function
+ */
+export function compose_signalAttribute(
+	key: string,
+	signal: Signal<any>,
+): Composer {
+	return function (state: CompositionState) {
+		must(state.node, "no node introduced in composition chain")
+		must(
+			state.node instanceof VDOMElement,
+			"attempted to assign attributes to a non-element",
+		)
+
+		onMount(() => {
+			const callbacks: SignalCallbacks<any> = {
+				valueChanged(next) {
+					must(state.node instanceof VDOMElement, "") // already ensured
+					state.node.setAttribute(key, next)
+				},
+			}
+
+			signal.addCallbacks(callbacks)
+
+			return () => {
+				signal.removeCallbacks(callbacks)
+			}
+		}, state.node)
 	}
 }
 

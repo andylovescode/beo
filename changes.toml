@@ -210,3 +210,8 @@ type = "minor"
 name = "Add setAttribute to VDOMElement"
 package = "@beo/vdom"
 type = "minor"
+
+[[change]]
+name = "Add onMount and compose_signalAttribute APIs"
+package = "@beo/framework"
+type = "minor"
