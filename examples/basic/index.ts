@@ -7,6 +7,13 @@ import {
 	compose_staticAttribute,
 	compose_staticChildren,
 } from "@beo/framework/composition"
+import { LoggerConfig, setLoggerConfig } from "@beo/log"
+
+{
+	const config = new LoggerConfig()
+	config.minSeverity = "debug"
+	setLoggerConfig(config)
+}
 
 const webDom = new WebDOM(document.body)
 
