@@ -200,3 +200,8 @@ type = "patch"
 name = "Add internal composition API"
 package = "@beo/framework"
 type = "minor"
+
+[[change]]
+name = "Create a simple logging framework"
+package = "@beo/log"
+type = "minor"
