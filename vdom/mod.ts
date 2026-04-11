@@ -195,7 +195,7 @@ export class VDOMFragment extends VDOMNode {
 		return this.children.flatMap((it) => it.getEffectiveChildren())
 	}
 
-	override toString() {
+	override toString(): string {
 		return `<${this.children}>`
 	}
 }
