@@ -20,18 +20,18 @@ const webDom = new WebDOM(document.body)
 const root = new VDOMElement(webDom.getRootNode())
 
 const testRoot = compose(
-    compose_fragment,
-    compose_staticChildren([
-        compose(
-            compose_element("p"),
-            compose_staticChildren([
-                compose(
-                    compose_element("text"),
-                    compose_staticAttribute("text", "hello")
-                )
-            ])
-        )
-    ])
+	compose_fragment,
+	compose_staticChildren([
+		compose(
+			compose_element("p"),
+			compose_staticChildren([
+				compose(
+					compose_element("text"),
+					compose_staticAttribute("text", "hello"),
+				),
+			]),
+		),
+	]),
 )
 
 root.isPinnedRoot = true

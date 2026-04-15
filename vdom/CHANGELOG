@@ -12,3 +12,9 @@
 
 ## 0.2.0
 	- (minor) Add public-facing living listeners API
+
+## 0.3.0
+	- (minor) Allow VDOMElement to take an element name
+	- (minor) Add `defer` api
+	- (minor) Add setAttribute to VDOMElement
+	- (minor) Add type-inference fields to VDOMNode subclasses

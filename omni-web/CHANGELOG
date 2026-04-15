@@ -7,3 +7,6 @@
 ## 0.1.1
 	- (patch) Add documentation
 	- (patch) Add example for JSR
+
+## 0.1.2
+	- (patch) Don't throw when setting no children on a text node

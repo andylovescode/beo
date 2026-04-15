@@ -230,3 +230,6 @@ type = "minor"
 name = "Add type-inference fields to VDOMNode subclasses"
 package = "@beo/vdom"
 type = "minor"
+
+[[change]]
+type = "release"
