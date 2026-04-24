@@ -10,7 +10,8 @@
 		"./vdom",
 		"./framework",
 		"./log",
-		"./duck"
+		"./duck",
+		"./jsx"
 	],
 	"tasks": {
 		"ok": {
@@ -36,6 +37,10 @@
 		"basic:dev": {
 			"command": "deno task --cwd=./examples/basic dev",
 			"description": "Run the basic application"
+		},
+		"dev": {
+			"command": "deno test --watch & deno fmt --watch & deno lint --fix --watch",
+			"description": "Useful development utility"
 		}
 	},
 	"fmt": {

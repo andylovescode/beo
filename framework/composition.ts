@@ -109,6 +109,22 @@ export function compose_signalAttribute(
 }
 
 /**
+ * Enters a property either signal-backed or static into a composition
+ * @param key The key to assign to
+ * @param value The signal to determine the attribute value
+ * @returns A composition function
+ */
+export function compose_dynamicAttribute(
+	key: string,
+	value: Signal<string> | string,
+) {
+	if (is<Signal<string>>(value, "isSignal")) {
+		return compose_signalAttribute(key, value)
+	}
+	return compose_staticAttribute(key, value)
+}
+
+/**
  * Compose several composers into a VDOMNode
  * @param composers
  */

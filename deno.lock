@@ -5,6 +5,7 @@
     "jsr:@cliffy/internal@1.0.0": "1.0.0",
     "jsr:@cliffy/keycode@1.0.0": "1.0.0",
     "jsr:@cliffy/prompt@1": "1.0.0",
+    "jsr:@std/assert@1": "1.0.19",
     "jsr:@std/assert@^1.0.18": "1.0.19",
     "jsr:@std/assert@^1.0.19": "1.0.19",
     "jsr:@std/cli@^1.0.28": "1.0.28",

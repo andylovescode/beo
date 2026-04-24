@@ -19,7 +19,8 @@ const webDom = new WebDOM(document.body)
 
 const root = new VDOMElement(webDom.getRootNode())
 
-const testRoot = compose(
+/*
+ compose(
 	compose_fragment,
 	compose_staticChildren([
 		compose(
@@ -32,6 +33,15 @@ const testRoot = compose(
 			]),
 		),
 	]),
+)
+	*/
+
+const testRoot = (
+	<>
+		<p>
+			<text text="hello" />
+		</p>
+	</>
 )
 
 root.isPinnedRoot = true

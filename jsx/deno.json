@@ -1,0 +1,17 @@
+{
+	"name": "@beo/jsx",
+	"license": "WTFPL",
+	"version": "0.1.0",
+	"exports": {
+		".": "./mod.ts",
+		"./jsx-runtime": "./jsx-runtime.ts"
+	},
+	"compilerOptions": {
+		"lib": [
+			"deno.window",
+			"deno.unstable",
+			"node",
+			"dom"
+		]
+	}
+}
