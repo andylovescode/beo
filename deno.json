@@ -11,11 +11,12 @@
 		"./framework",
 		"./log",
 		"./duck",
-		"./jsx"
+		"./jsx",
+		"./plan"
 	],
 	"tasks": {
 		"ok": {
-			"command": "deno task version && deno test && deno fmt && deno lint --fix",
+			"command": "deno task version && deno test && deno fmt && deno lint --fix && deno task todo",
 			"description": "Get ready to commit"
 		},
 		"commit": {
@@ -37,6 +38,10 @@
 		"basic:dev": {
 			"command": "deno task --cwd=./examples/basic dev",
 			"description": "Run the basic application"
+		},
+		"todo": {
+			"command": "deno run -A @beo/plan",
+			"description": "Update todo list"
 		},
 		"dev": {
 			"command": "deno test --watch & deno fmt --watch & deno lint --fix --watch",

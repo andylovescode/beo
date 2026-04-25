@@ -225,7 +225,7 @@ export class Logger {
 
 		let prefix = `${severitySymbol}[${this.#path}]: `
 
-		prefix = prefix.padStart(this.#config.leftEdgeSize, " ") // fixme: pull in unneccessary dependency on leftpad :^)
+		prefix = prefix.padStart(this.#config.leftEdgeSize, " ") // fixme: p50 /// pull in unneccessary dependency on leftpad :^)
 
 		const text = prefix + options.message
 

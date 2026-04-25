@@ -56,7 +56,7 @@ export function jsx(
 		if (prop === "children") {
 			const children = props[prop]
 
-			compose_staticChildren(children.map(makeNode))(composition) // FIXME: p50 - this may not be static
+			compose_staticChildren(children.map(makeNode))(composition) // fixme: p50 /// this may not be static
 			continue
 		}
 

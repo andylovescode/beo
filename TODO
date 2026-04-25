@@ -1,0 +1,4 @@
+| priority | type | name |
+| --- | --- | --- |
+| 50 | fixme | [this may not be static](jsx/jsx-runtime.ts) |
+| 50 | fixme | [pull in unneccessary dependency on leftpad :^)](log/mod.ts) |

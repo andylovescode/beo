@@ -233,3 +233,8 @@ type = "minor"
 
 [[change]]
 type = "release"
+
+[[change]]
+name = "Create codebase TODO manager"
+package = "@beo/plan"
+type = "minor"

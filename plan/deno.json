@@ -1,0 +1,9 @@
+{
+	"name": "@beo/plan",
+	"license": "WTFPL",
+	"version": "0.0.0",
+	"exports": "./mod.ts",
+	"imports": {
+		"@std/fs": "jsr:@std/fs@^1.0.23"
+	}
+}
